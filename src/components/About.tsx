@@ -1,174 +1,140 @@
 import { motion } from "framer-motion";
-import { Mail, ShieldCheck, Video, Award, MapPin } from "lucide-react";
-import { site } from "@/data/content";
+import { Award, ShieldCheck, Video, MapPin, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function About() {
   return (
-    <section id="about" className="bg-panel py-[100px] md:py-[140px] relative overflow-hidden border-t border-b border-white/5">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] bg-brand-blue/10 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="wrap relative z-10">
+    <section id="about" className="bg-void py-24 md:py-[120px] relative border-t border-white/10">
+      <div className="wrap">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="sec-head !pt-0 max-w-[720px] mb-12 md:mb-16"
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="sec-head !pt-0 max-w-[760px]"
         >
           <div className="eyebrow">ABOUT THE PILOT</div>
-          <h2>Flying for a living. Capturing perspectives from above.</h2>
+          <h2>Precision in Every Flight.</h2>
           <p>
-            Independent aerial cinematography practice based in Chennai, delivering cinematic 4K footage for real estate, commercial films, and special events.
+            Licensed drone operator delivering high-resolution aerial cinematography for weddings, real estate, and events across South India.
           </p>
         </motion.div>
 
-        {/* Content Grid: Photo + Story */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Photo & Spec Card Column */}
+        <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1fr] gap-12 lg:gap-16 items-center mt-12">
+          {/* Owner Portrait Card */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            initial={{ opacity: 0, y: 36 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.9, ease: "easeOut" }}
-            className="lg:col-span-5 flex flex-col gap-6"
+            className="relative group"
           >
-            {/* Pilot Portrait Frame */}
-            <div className="relative rounded-lg overflow-hidden border border-white/10 bg-void group shadow-[0_30px_90px_-20px_rgba(0,0,0,0.9)]">
+            <div className="relative rounded-md overflow-hidden border border-brand-blue/30 bg-white/5 aspect-[4/5] shadow-2xl">
               <img
                 src="/images/pilot.jpg"
-                alt="SB Aerials Drone Pilot"
-                className="w-full aspect-[4/5] object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                alt="Sathik Basha — Licensed Drone Pilot"
+                className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-void via-void/30 to-transparent opacity-90" />
 
-              {/* Status Badge */}
-              <div className="absolute top-4 left-4 font-mono text-[10px] tracking-[0.14em] text-brand-light uppercase bg-void/80 backdrop-blur-md px-3 py-1.5 rounded-sm border border-brand-light/20 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-brand-light animate-pulse" />
-                <span>CERTIFIED PILOT</span>
-              </div>
-
-              {/* Bottom Card HUD Overlay */}
-              <div className="absolute bottom-5 left-5 right-5 flex justify-between items-end font-mono text-[11px] text-steel">
+              {/* Overlay Badge */}
+              <div className="absolute bottom-6 left-6 right-6 p-5 rounded-md bg-void/80 backdrop-blur-md border border-white/10 flex items-center gap-4">
+                <div className="w-11 h-11 rounded-full bg-brand-blue/20 border border-brand-light/30 flex items-center justify-center shrink-0">
+                  <ShieldCheck className="w-5 h-5 text-brand-light" />
+                </div>
                 <div>
-                  <div className="text-cloud font-medium text-[15px]">S.B.</div>
-                  <div className="text-[10.5px] tracking-widest text-brand-light uppercase mt-0.5">
-                    Founder &amp; Chief Pilot
+                  <div className="font-display font-bold text-cloud text-base leading-none">
+                    Sathik Basha
                   </div>
-                </div>
-                <div className="flex items-center gap-1 text-[11px]">
-                  <MapPin className="w-3.5 h-3.5 text-brand-light" />
-                  <span className="text-cloud font-medium">Chennai, IN</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Tech Specs Grid */}
-            <div className="grid grid-cols-2 gap-3.5">
-              <div className="p-4 rounded-md border border-white/10 bg-void/60 backdrop-blur-sm">
-                <div className="font-mono text-[10px] tracking-[0.12em] uppercase text-steel flex items-center gap-1.5 mb-1">
-                  <Video className="w-3.5 h-3.5 text-brand-light" />
-                  <span>CAMERA CRAFT</span>
-                </div>
-                <div className="font-display text-sm text-cloud font-semibold">4K / 60FPS Cinematic</div>
-              </div>
-
-              <div className="p-4 rounded-md border border-white/10 bg-void/60 backdrop-blur-sm">
-                <div className="font-mono text-[10px] tracking-[0.12em] uppercase text-steel flex items-center gap-1.5 mb-1">
-                  <Award className="w-3.5 h-3.5 text-brand-light" />
-                  <span>FLIGHT HOURS</span>
-                </div>
-                <div className="font-display text-sm text-cloud font-semibold">340+ Hours Logged</div>
-              </div>
-
-              <div className="p-4 rounded-md border border-white/10 bg-void/60 backdrop-blur-sm">
-                <div className="font-mono text-[10px] tracking-[0.12em] uppercase text-steel flex items-center gap-1.5 mb-1">
-                  <ShieldCheck className="w-3.5 h-3.5 text-brand-light" />
-                  <span>SAFETY RECORD</span>
-                </div>
-                <div className="font-display text-sm text-cloud font-semibold">100% Incident Free</div>
-              </div>
-
-              <div className="p-4 rounded-md border border-white/10 bg-void/60 backdrop-blur-sm">
-                <div className="font-mono text-[10px] tracking-[0.12em] uppercase text-steel flex items-center gap-1.5 mb-1">
-                  <Mail className="w-3.5 h-3.5 text-brand-light" />
-                  <span>DIRECT EMAIL</span>
-                </div>
-                <div className="font-mono text-[11px] text-cloud truncate" title={site.email}>
-                  contact.sbaerials@gmail.com
+                  <div className="font-mono text-[10px] tracking-wider text-brand-light mt-1 uppercase font-semibold">
+                    Licensed Drone Pilot · 2+ Yrs Exp.
+                  </div>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Bio & Narrative Column */}
+          {/* Bio & Details Content */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.9, ease: "easeOut", delay: 0.1 }}
-            className="lg:col-span-7 flex flex-col justify-between h-full pt-2"
+            initial={{ opacity: 0, y: 36 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
+            className="space-y-6"
           >
-            <div className="space-y-6 text-[#C4CBD8] leading-[1.8] text-base md:text-[17px]">
-              <p className="text-cloud font-display text-xl md:text-2xl leading-snug font-normal border-l-2 border-brand-light pl-5 py-1">
-                "SB Aerials started as a passion for chasing sunrise light and transformed into a full-scale aerial cinematography practice."
+            <div className="space-y-4">
+              <h3 className="text-2xl md:text-3xl uppercase font-display tracking-tight text-cloud">
+                Meet Sathik Basha
+              </h3>
+              <p className="text-brand-light font-mono text-xs tracking-wider uppercase">
+                Founder &amp; Certified Lead Drone Operator
               </p>
+            </div>
 
-              <p>
-                Every single project—whether it's a sleek real estate walkthrough, a grand wedding film, a commercial launch, or a large-scale land survey—is personally planned, flown, color-graded, and edited by one pilot from start to finish.
-              </p>
+            <p className="text-steel text-[15px] leading-relaxed">
+              Hello, my name is <b className="text-cloud font-normal">Sathik Basha</b>. I am a certified drone pilot with over <b className="text-cloud font-normal">2+ years of professional experience</b> specializing in aerial filming for weddings, commercial events, real estate, and site coverage across Chennai and South India.
+            </p>
 
-              <p>
-                We don't use generic stock footage or outsourced pilots. Everything showcased on this site was captured on-site on request with strict adherence to flight safety, airspace regulations, and visual excellence.
-              </p>
+            <p className="text-steel text-[15px] leading-relaxed">
+              Whether capturing emotional moments at a wedding, establishing dynamic perspectives for commercial projects, or conducting precise aerial coverage for events and surveys, every flight is executed with strict safety standards and cinematic precision.
+            </p>
 
-              <div className="pt-4 border-t border-white/10 space-y-3">
-                <h4 className="font-mono text-[11px] tracking-[0.16em] uppercase text-brand-light">
-                  WHY CLIENTS TRUST SB AERIALS
-                </h4>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-steel">
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-light" />
-                    <span>Personalized One-on-One Service</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-light" />
-                    <span>Fast 48-Hour Turnaround Available</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-light" />
-                    <span>Raw + Color-Graded Deliverables</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-light" />
-                    <span>Full Airspace Compliance</span>
-                  </li>
-                </ul>
+            {/* Feature Highlights Grid */}
+            <div className="grid grid-cols-2 gap-4 pt-4">
+              <div className="p-4 rounded-sm border border-white/10 bg-white/[0.02] flex items-start gap-3">
+                <Award className="w-4 h-4 text-brand-light shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-display font-semibold text-xs text-cloud uppercase">2+ Years Exp.</div>
+                  <div className="font-mono text-[10px] text-steel mt-0.5">Proven Flight Record</div>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-sm border border-white/10 bg-white/[0.02] flex items-start gap-3">
+                <ShieldCheck className="w-4 h-4 text-brand-light shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-display font-semibold text-xs text-cloud uppercase">Licensed Pilot</div>
+                  <div className="font-mono text-[10px] text-steel mt-0.5">DGCA Compliant</div>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-sm border border-white/10 bg-white/[0.02] flex items-start gap-3">
+                <Video className="w-4 h-4 text-brand-light shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-display font-semibold text-xs text-cloud uppercase">4K/60fps Quality</div>
+                  <div className="font-mono text-[10px] text-steel mt-0.5">Cinematic Footage</div>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-sm border border-white/10 bg-white/[0.02] flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-brand-light shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-display font-semibold text-xs text-cloud uppercase">South India</div>
+                  <div className="font-mono text-[10px] text-steel mt-0.5">On-Location Coverage</div>
+                </div>
               </div>
             </div>
 
-            {/* CTA & Signature */}
-            <div className="mt-10 pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-6">
-              <div className="flex gap-4">
-                <Button variant="primary" onClick={() => (window.location.hash = "#bookings")}>
-                  Book a Shoot
-                </Button>
-                <Button
-                  variant="ghost"
-                  onClick={() => (window.location.href = `mailto:${site.email}`)}
-                >
-                  Send Email
-                </Button>
+            {/* Guarantee Checkmarks */}
+            <div className="space-y-2 pt-2 text-xs font-mono text-steel">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-3.5 h-3.5 text-brand-light" />
+                <span>Wedding &amp; Event Aerial Cinematography</span>
               </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-3.5 h-3.5 text-brand-light" />
+                <span>Real Estate Walkthroughs &amp; Land Surveys</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-3.5 h-3.5 text-brand-light" />
+                <span>Fast 24–48 Hour Footage Delivery</span>
+              </div>
+            </div>
 
-              <div className="font-display text-sm text-cloud">
-                S.B.
-                <span className="block font-mono text-[10.5px] text-steel mt-0.5 tracking-wider">
-                  Founder &amp; Chief Pilot · SB Aerials
-                </span>
-              </div>
+            <div className="pt-4 flex gap-4">
+              <Button variant="primary" onClick={() => (window.location.hash = "#bookings")}>
+                Book a Shoot
+              </Button>
             </div>
           </motion.div>
         </div>
