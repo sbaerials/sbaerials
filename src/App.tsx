@@ -13,7 +13,6 @@ import About from "@/components/About";
 import Bookings from "@/components/Bookings";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import { AudioProvider } from "@/context/AudioContext";
 
 const SECTION_IDS = ["home", "showcase", "work", "about", "bookings"];
 
@@ -41,7 +40,7 @@ export default function App() {
   }, []);
 
   return (
-    <AudioProvider>
+    <>
       <Altimeter />
       <Navbar activeSection={activeSection} onOpenMobileMenu={() => setMobileMenuOpen(true)} />
       <MobileMenu open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
@@ -61,6 +60,6 @@ export default function App() {
       <Footer />
       <WhatsAppFloat />
       <Lightbox src={lightboxSrc} onClose={() => setLightboxSrc(null)} />
-    </AudioProvider>
+    </>
   );
 }

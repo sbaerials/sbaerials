@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, Volume2, VolumeX } from "lucide-react";
+import { X } from "lucide-react";
 import { getVideoRotation } from "@/data/content";
-import { useAudio } from "@/context/AudioContext";
 
 interface LightboxProps {
   src: string | null;
@@ -11,14 +10,6 @@ interface LightboxProps {
 
 export default function Lightbox({ src, onClose }: LightboxProps) {
   const rotation = src ? getVideoRotation(src) : 0;
-  const { isMuted, setMuted, toggleMute } = useAudio();
-
-  useEffect(() => {
-    if (src) {
-      // Auto-unmute when user opens a project in lightbox
-      setMuted(false);
-    }
-  }, [src, setMuted]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -44,40 +35,21 @@ export default function Lightbox({ src, onClose }: LightboxProps) {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.96, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="relative w-full max-w-[1100px] flex flex-col items-center justify-center"
+            className="relative w-full max-w-[1100px] flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="w-full flex items-center justify-between pb-3">
-              <button
-                onClick={toggleMute}
-                className="font-mono text-xs tracking-[0.1em] uppercase text-cloud hover:text-brand-light flex items-center gap-2 cursor-pointer bg-white/5 border border-white/10 px-3 py-1.5 rounded-full backdrop-blur-md"
-              >
-                {isMuted ? (
-                  <>
-                    <VolumeX className="w-3.5 h-3.5 text-steel" /> Sound Off
-                  </>
-                ) : (
-                  <>
-                    <Volume2 className="w-3.5 h-3.5 text-brand-light animate-pulse" /> Sound Playing
-                  </>
-                )}
-              </button>
-
-              <button
-                onClick={onClose}
-                className="font-mono text-xs tracking-[0.1em] uppercase text-cloud hover:text-brand-light flex items-center gap-2 cursor-pointer"
-              >
-                Close <X className="w-3.5 h-3.5" />
-              </button>
-            </div>
-
+            <button
+              onClick={onClose}
+              className="absolute -top-11 right-0 font-mono text-xs tracking-[0.1em] uppercase text-cloud hover:text-brand-light flex items-center gap-2"
+            >
+              Close <X className="w-3.5 h-3.5" />
+            </button>
             <video
               src={src}
               controls
               autoPlay
-              muted={isMuted}
               playsInline
-              className="w-full max-h-[82vh] rounded-md bg-black object-contain border border-white/10"
+              className="w-full max-h-[82vh] rounded-md bg-black object-contain"
               style={{
                 transform: rotation ? `rotate(${rotation}deg)` : undefined,
               }}
