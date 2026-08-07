@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
+import { Volume2, VolumeX } from "lucide-react";
 import { heroClipOrder, getVideoRotation } from "@/data/content";
 import { useVideoReel } from "@/hooks/useVideoReel";
+import { useAudio } from "@/context/AudioContext";
 import { Button } from "@/components/ui/button";
 
 export default function Hero() {
   const { activeIndex, setVideoRef, containerRef } = useVideoReel(heroClipOrder, { segmentSeconds: 9 });
+  const { isMuted, toggleMute } = useAudio();
 
   return (
     <section
@@ -20,7 +23,7 @@ export default function Hero() {
               key={src}
               ref={setVideoRef(i)}
               src={src}
-              muted
+              muted={isMuted}
               playsInline
               preload={i === 0 ? "auto" : "metadata"}
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 will-change-[opacity,transform] ${
@@ -79,7 +82,7 @@ export default function Hero() {
             SB Aerials is an independent aerial cinematography practice based in Chennai —
             real estate, weddings, events, and commercial coverage, flown and edited personally.
           </p>
-          <div className="flex gap-4 mt-9 flex-wrap">
+          <div className="flex gap-4 mt-9 flex-wrap items-center">
             <Button variant="primary" onClick={() => (window.location.hash = "#bookings")}>
               Book a Shoot
             </Button>
@@ -89,11 +92,36 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        <div className="relative z-[2] flex items-center gap-3 font-mono text-[10px] tracking-[0.15em] text-steel py-6 uppercase">
-          <span>Scroll to explore</span>
-          <div className="w-[34px] h-px bg-steel relative overflow-hidden">
-            <span className="absolute -left-full w-full h-full bg-brand-light animate-[scrollCue_1.8s_ease-in-out_infinite]" />
+        <div className="relative z-[2] flex items-center justify-between font-mono text-[10px] tracking-[0.15em] text-steel py-6 uppercase">
+          <div className="flex items-center gap-3">
+            <span>Scroll to explore</span>
+            <div className="w-[34px] h-px bg-steel relative overflow-hidden">
+              <span className="absolute -left-full w-full h-full bg-brand-light animate-[scrollCue_1.8s_ease-in-out_infinite]" />
+            </div>
           </div>
+
+          <button
+            onClick={toggleMute}
+            className="flex items-center gap-2.5 px-3.5 py-2 rounded-full border border-white/15 bg-black/40 backdrop-blur-md text-cloud hover:text-brand-light hover:border-brand-light/50 transition-all cursor-pointer group"
+            title={isMuted ? "Unmute Aerial Sound" : "Mute Sound"}
+          >
+            {isMuted ? (
+              <>
+                <VolumeX className="w-4 h-4 text-steel group-hover:text-brand-light transition-colors" />
+                <span className="text-[11px] font-mono tracking-wider">SOUND OFF</span>
+              </>
+            ) : (
+              <>
+                <Volume2 className="w-4 h-4 text-brand-light animate-pulse" />
+                <span className="text-[11px] font-mono tracking-wider text-brand-light">SOUND ON</span>
+                <span className="flex items-end gap-[2px] h-3 ml-0.5">
+                  <span className="w-[2px] h-full bg-brand-light animate-[bounce_1s_infinite_100ms]" />
+                  <span className="w-[2px] h-2/3 bg-brand-light animate-[bounce_1s_infinite_300ms]" />
+                  <span className="w-[2px] h-4/5 bg-brand-light animate-[bounce_1s_infinite_200ms]" />
+                </span>
+              </>
+            )}
+          </button>
         </div>
       </div>
     </section>
