@@ -283,7 +283,7 @@ export default function Bookings() {
                 Based in — <b className="text-cloud font-normal">{site.location}</b>
               </span>
               <span>
-                Coverage — <b className="text-cloud font-normal">Tamil Nadu &amp; South India</b>
+                Coverage — <b className="text-cloud font-normal">Tamil Nadu &amp; All India</b>
               </span>
               <span>
                 Turnaround — <b className="text-cloud font-normal">Within 24–48 Hours</b>

@@ -12,3 +12,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Raw capture media & local backups (>100MB exceeds GitHub push limit)
+*.mov
+public/videos/backup/
+

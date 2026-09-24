@@ -17,7 +17,7 @@ export default function About() {
           <div className="eyebrow">ABOUT THE PILOT</div>
           <h2>Precision in Every Flight.</h2>
           <p>
-            Licensed drone operator delivering high-resolution aerial cinematography for weddings, real estate, and events across South India.
+            Licensed drone operator delivering high-resolution aerial cinematography for weddings, real estate, and events across India.
           </p>
         </motion.div>
 
@@ -73,7 +73,7 @@ export default function About() {
             </div>
 
             <p className="text-steel text-[15px] leading-relaxed">
-              Hello, my name is <b className="text-cloud font-normal">Sathik Basha</b>. I am a certified drone pilot with over <b className="text-cloud font-normal">2+ years of professional experience</b> specializing in aerial filming for weddings, commercial events, real estate, and site coverage across Chennai and South India.
+              Hello, my name is <b className="text-cloud font-normal">Sathik Basha</b>. I am a certified drone pilot with over <b className="text-cloud font-normal">2+ years of professional experience</b> specializing in aerial filming for weddings, commercial events, real estate, and site coverage across Chennai and India.
             </p>
 
             <p className="text-steel text-[15px] leading-relaxed">
@@ -109,7 +109,7 @@ export default function About() {
               <div className="p-4 rounded-sm border border-white/10 bg-white/[0.02] flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-brand-light shrink-0 mt-0.5" />
                 <div>
-                  <div className="font-display font-semibold text-xs text-cloud uppercase">South India</div>
+                  <div className="font-display font-semibold text-xs text-cloud uppercase">India</div>
                   <div className="font-mono text-[10px] text-steel mt-0.5">On-Location Coverage</div>
                 </div>
               </div>

@@ -1,10 +1,14 @@
 import { motion } from "framer-motion";
+import { Volume2, VolumeX } from "lucide-react";
 import { heroClipOrder, getVideoRotation } from "@/data/content";
 import { useVideoReel } from "@/hooks/useVideoReel";
 import { Button } from "@/components/ui/button";
 
 export default function Hero() {
-  const { activeIndex, setVideoRef, containerRef } = useVideoReel(heroClipOrder, { segmentSeconds: 9 });
+  const { activeIndex, isMuted, toggleMute, setVideoRef, containerRef } = useVideoReel(heroClipOrder, {
+    segmentSeconds: 9,
+    initialMuted: true,
+  });
 
   return (
     <section
@@ -20,11 +24,10 @@ export default function Hero() {
               key={src}
               ref={setVideoRef(i)}
               src={src}
-              muted
               playsInline
               preload={i === 0 ? "auto" : "metadata"}
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 will-change-[opacity,transform] ${
-                activeIndex === i ? "opacity-100 z-10" : "opacity-0 z-0"
+                activeIndex === i ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
               }`}
               style={{
                 transform: rotation ? `translateZ(0) rotate(${rotation}deg) scale(1.78)` : "translateZ(0)",
@@ -35,6 +38,37 @@ export default function Hero() {
       </div>
       <div className="absolute inset-0 z-[1] bg-hero-scrim" />
 
+      {/* Floating Audio Immersion Pill */}
+      <div className="absolute top-[100px] md:top-[120px] right-6 md:right-12 z-20">
+        <button
+          onClick={toggleMute}
+          className={`px-3.5 py-1.5 rounded-full border backdrop-blur-md font-mono text-[10px] md:text-[11px] tracking-wider uppercase flex items-center gap-2 transition-all cursor-pointer ${
+            !isMuted
+              ? "bg-brand-blue/30 border-brand-light text-cloud shadow-[0_0_20px_rgba(43,109,255,0.4)]"
+              : "bg-black/50 border-white/15 text-steel hover:text-cloud hover:border-white/30"
+          }`}
+          title={isMuted ? "Turn on cinematic sound" : "Mute sound"}
+          aria-label={isMuted ? "Turn on cinematic sound" : "Mute sound"}
+        >
+          {isMuted ? (
+            <>
+              <VolumeX className="w-3.5 h-3.5" />
+              <span>SOUND OFF</span>
+            </>
+          ) : (
+            <>
+              <Volume2 className="w-3.5 h-3.5 text-brand-light" />
+              <span className="flex items-center gap-0.5">
+                <span className="w-0.5 h-2 bg-brand-light animate-[pulse_0.6s_ease-in-out_infinite]" />
+                <span className="w-0.5 h-3 bg-brand-light animate-[pulse_0.4s_ease-in-out_infinite]" />
+                <span className="w-0.5 h-1.5 bg-brand-light animate-[pulse_0.7s_ease-in-out_infinite]" />
+              </span>
+              <span className="text-brand-light font-semibold">SOUND ON</span>
+            </>
+          )}
+        </button>
+      </div>
+
       <div className="wrap !px-0 flex flex-col flex-1 pt-5 relative z-[2]">
         <motion.div
           initial={{ opacity: 0, y: -16 }}
@@ -44,15 +78,18 @@ export default function Hero() {
         >
           <div className="flex flex-col gap-1">
             <span>LOCATION</span>
-            <b className="text-cloud text-[13px] font-medium">CHENNAI, IN</b>
+            <b className="text-cloud text-[13px] font-medium">CHENNAI, IN (13.08° N, 80.27° E)</b>
           </div>
           <div className="flex flex-col gap-1 md:text-center">
             <span>STATUS</span>
-            <b className="text-cloud text-[13px] font-medium">BOOKING OPEN</b>
+            <b className="text-cloud text-[13px] font-medium flex items-center justify-start md:justify-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              BOOKING OPEN · 2026
+            </b>
           </div>
           <div className="flex flex-col gap-1 md:text-right">
             <span>OUTPUT</span>
-            <b className="text-cloud text-[13px] font-medium">4K CINEMATIC</b>
+            <b className="text-cloud text-[13px] font-medium">4K/60 CINEMATIC</b>
           </div>
         </motion.div>
 
