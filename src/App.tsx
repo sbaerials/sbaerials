@@ -10,11 +10,12 @@ import Services from "@/components/Services";
 import Work from "@/components/Work";
 import Lightbox from "@/components/Lightbox";
 import About from "@/components/About";
+import Reviews from "@/components/Reviews";
 import Bookings from "@/components/Bookings";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 
-const SECTION_IDS = ["home", "showcase", "work", "about", "bookings"];
+const SECTION_IDS = ["home", "showcase", "work", "about", "reviews", "bookings"];
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("home");
@@ -54,6 +55,7 @@ export default function App() {
         <Services />
         <Work onOpen={setLightboxSrc} />
         <About />
+        <Reviews />
         <Bookings />
       </main>
 

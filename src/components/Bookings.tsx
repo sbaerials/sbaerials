@@ -1,6 +1,15 @@
 import { useRef, useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
-import { Phone, Instagram, MessageCircle, Send, CheckCircle2, Loader2 } from "lucide-react";
+import {
+  Phone,
+  Instagram,
+  MessageCircle,
+  Send,
+  CheckCircle2,
+  Loader2,
+  MapPin,
+  ArrowUpRight,
+} from "lucide-react";
 import { serviceOptions, site, whatsappHref } from "@/data/content";
 import { Button } from "@/components/ui/button";
 
@@ -283,11 +292,37 @@ export default function Bookings() {
                 Based in — <b className="text-cloud font-normal">{site.location}</b>
               </span>
               <span>
-                Coverage — <b className="text-cloud font-normal">Tamil Nadu &amp; All India</b>
+                Coverage — <b className="text-cloud font-normal">Tamil Nadu &amp; India</b>
               </span>
               <span>
                 Turnaround — <b className="text-cloud font-normal">Within 24–48 Hours</b>
               </span>
+            </div>
+
+            {/* Location map */}
+            <div className="pt-3 border-t border-white/10">
+              <div className="eyebrow mb-3">FIND US</div>
+              <div className="relative rounded-md overflow-hidden border border-white/10 aspect-[16/10] bg-panel2">
+                <iframe
+                  src={site.mapsEmbedUrl}
+                  title="SB Aerials location on Google Maps"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full border-0"
+                  style={{ filter: "invert(0.9) hue-rotate(180deg) saturate(0.8)" }}
+                />
+              </div>
+              <a
+                href={site.mapsUrl}
+                target="_blank"
+                rel="noopener"
+                className="group mt-3 inline-flex items-center gap-2 font-mono text-xs text-steel hover:text-brand-light transition-colors"
+              >
+                <MapPin className="w-3.5 h-3.5 text-brand-light" />
+                Open in Google Maps · Get directions
+                <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
             </div>
 
             <div className="flex gap-3 pt-2">

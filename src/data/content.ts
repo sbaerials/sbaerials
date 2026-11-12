@@ -11,6 +11,9 @@ export const site = {
   // Official contact email
   email: "contact.sbaerials@gmail.com",
   location: "Chennai, Tamil Nadu",
+  // Google Maps pin for the studio / base location
+  mapsUrl: "https://maps.app.goo.gl/yixeV6frJ5qzWi9G8",
+  mapsEmbedUrl: "https://maps.google.com/maps?q=12.8508565,80.2413303&z=15&output=embed",
 };
 
 export const whatsappHref = `${site.whatsappBase}?text=${encodeURIComponent(
@@ -21,6 +24,7 @@ export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
+  { label: "Reviews", href: "#reviews" },
   { label: "Bookings", href: "#bookings" },
 ];
 
@@ -259,5 +263,100 @@ export const projects: ProjectItem[] = [
     location: "Bay of Bengal",
     altitude: "95M",
     src: "/videos/flight-06.mp4",
+  },
+];
+
+export interface Review {
+  name: string;
+  location: string;
+  service: string;
+  date: string;
+  rating: number; // 1–5
+  text: string;
+}
+
+// ⚠️ PLACEHOLDER REVIEWS — sample copy for layout only.
+// Replace with genuine client reviews (e.g. copied from Google Reviews /
+// WhatsApp feedback, with the client's permission) before going live.
+export const reviews: Review[] = [
+  {
+    name: "Priya Raghavan",
+    location: "Chennai",
+    service: "Wedding Photography",
+    date: "Oct 2026",
+    rating: 5,
+    text: "The aerial shots of our mandapam and the baraat made our wedding film feel like a movie. Very calm and professional on the day, and the footage came within two days.",
+  },
+  {
+    name: "Karthik Subramanian",
+    location: "OMR, Chennai",
+    service: "Real Estate",
+    date: "Sep 2026",
+    rating: 5,
+    text: "We used the drone walkthrough for our villa project listing and enquiries went up noticeably. Clean framing, smooth movement, and quick edits.",
+  },
+  {
+    name: "Anjali Menon",
+    location: "Mahabalipuram",
+    service: "Event Coverage",
+    date: "Sep 2026",
+    rating: 5,
+    text: "Covered our beach-side company offsite beautifully. The sunset crowd shot is now on our careers page. Highly recommend.",
+  },
+  {
+    name: "Arjun Venkatesh",
+    location: "Sriperumbudur",
+    service: "Construction Monitoring",
+    date: "Aug 2026",
+    rating: 5,
+    text: "Monthly progress flights for our factory site have been consistent and on schedule. The comparison footage really helps in client reviews.",
+  },
+  {
+    name: "Divya Krishnan",
+    location: "Coimbatore",
+    service: "Cinematic Videos",
+    date: "Aug 2026",
+    rating: 5,
+    text: "Travelled down for our family estate film. The colour grading and music sync were spot on — my parents loved it.",
+  },
+  {
+    name: "Mohammed Irfan",
+    location: "Chengalpattu",
+    service: "Land Survey",
+    date: "Jul 2026",
+    rating: 5,
+    text: "Needed boundary documentation for a 6-acre plot. Clear aerial maps delivered quickly and explained patiently. Good value.",
+  },
+  {
+    name: "Lakshmi Narayanan",
+    location: "Thanjavur",
+    service: "Agriculture Survey",
+    date: "Jun 2026",
+    rating: 5,
+    text: "The field overview helped us spot irrigation gaps we never noticed from the ground. Very knowledgeable about farm surveys.",
+  },
+  {
+    name: "Rohit Sharma",
+    location: "Bengaluru",
+    service: "Commercial Shoots",
+    date: "May 2026",
+    rating: 5,
+    text: "Hired SB Aerials for our resort brand film on ECR. Permissions, safety and timing were all handled without any fuss.",
+  },
+  {
+    name: "Meera Iyer",
+    location: "Adyar, Chennai",
+    service: "Wedding Photography",
+    date: "Apr 2026",
+    rating: 5,
+    text: "Sathik coordinated perfectly with our photographer team. The temple entry aerial is our favourite moment from the whole album.",
+  },
+  {
+    name: "Senthil Kumar",
+    location: "Madurai",
+    service: "Event Coverage",
+    date: "Mar 2026",
+    rating: 5,
+    text: "Our temple festival procession was captured from angles we had never seen before. Punctual, respectful of the crowd, and great output.",
   },
 ];
